@@ -34,7 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/category">Quản lý danh mục</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="/product">Quản lý sản phẩm</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
