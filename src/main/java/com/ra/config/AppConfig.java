@@ -49,4 +49,6 @@ public class AppConfig implements WebMvcConfigurer {
         sessionFactoryBean.setHibernateProperties(properties);
         return sessionFactoryBean;
     }
+
+
 }
