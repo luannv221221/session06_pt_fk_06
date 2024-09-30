@@ -1,12 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 9/30/2024
-  Time: 7:52 PM
+  Date: 9/27/2024
+  Time: 6:53 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,37 +23,35 @@
 <body>
 
 <div class="container">
-    <h1 class="text-center text-danger">Danh sách sản phẩm </h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Category</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-       <c:forEach items="${products}" var="product" varStatus="loop">
-           <tr>
-               <td scope="row">${loop.index+1}</td>
-               <td>${product.productName}</td>
-               <td>${product.price}</td>
-               <td><img src=""></td>
-               <td>${product.category.categoryName}</td>
-               <td>
-                   <a class="btn btn-primary">Edit</a>
-                   <a class="btn btn-danger">Delete</a>
-               </td>
-           </tr>
-       </c:forEach>
+    <div class="row">
+        <div class="col-lg-6">
+            <f:form method="post" action="" modelAttribute="product">
+                <div class="form-group">
+                    <label >Product Name</label>
+                    <f:input type="text" class="form-control" path="productName" />
+                </div>
+                <div class="form-group">
+                    <label >Product Price</label>
+                    <f:input type="text" class="form-control" path="price" />
+                </div>
+                <div class="form-group">
+                    <label >Image</label>
+                    <input type="file" class="form-control"/>
+                </div>
 
-        </tbody>
-    </table>
+                    <div class="form-group">
+                        <label >Chọn danh mục</label>
+                        <f:select class="form-control" path="category.id">
+                            <option>Ten danh mục</option>
+                            <f:options items="${categories}" itemLabel="categoryName" itemValue="id" />
+                        </f:select>
+                    </div>
 
-    <a class="btn btn-success" href="product/add">Thêm mới</a>
+
+                <button type="submit" class="btn btn-primary">Thêm mới</button>
+            </f:form>
+        </div>
+    </div>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -30,6 +30,18 @@ public class ProductDAOImpl implements ProductDAO{
 
     @Override
     public Boolean create(Product product) {
-        return null;
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.save(product);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        return false;
     }
 }
